@@ -1,7 +1,18 @@
+import {bigIntNumeric, doSomeCalc, obj} from './es2020_demo'
+
 let numTimesClicked = 0;
 
+function isXMLHttpRequestEnabled(){
+  return typeof globalThis.XMLHttpRequest === 'function';
+}
+
+console.log(isXMLHttpRequestEnabled());
+
+console.log(doSomeCalc(6,7));
+// console.log(obj.a?.b);
+
 function win() {
-  alert('You win!');
+  alert(bigIntNumeric);
   reset();
 }
 
@@ -14,6 +25,3 @@ export default function click() {
   if (numTimesClicked === 3)
     win();
 };
-
-
-
