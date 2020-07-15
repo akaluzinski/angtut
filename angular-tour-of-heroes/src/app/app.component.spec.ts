@@ -22,6 +22,7 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('angular-tour-of-heroes');
   });
 
+
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
