@@ -50,3 +50,13 @@ const removeFirstTwo = list => {
   return arr;
 };
 const arr = removeFirstTwo([1,2,3,4,5,6,7,8,9,10]);
+
+const makeServerRequest = new Promise((resolve, reject) => {
+  let responseFromServer = true;
+  if(responseFromServer) {
+    resolve("We got the data");
+  } else {
+    reject("Data not received");
+  }
+}).then(result => console.log(result))
+.error(error => console.log(error));
