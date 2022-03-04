@@ -15,6 +15,19 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         transform: 'translateX(50px)'
       })),
       transition('normal <=> highlighted', animate(300))
+    ]),
+    trigger('list1', [
+      state('inList', style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })),
+      transition('void => *',  [
+        style({
+          opacity: 0,
+          transform: 'translate(-100px)'
+        }),
+        animate(300)
+      ])
     ])
   ]
 })
