@@ -27,6 +27,12 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
           transform: 'translate(-100px)'
         }),
         animate(300)
+      ]),
+      transition('* => void',  [
+        animate(300, style({
+          transform: 'translateX(100px)',
+          opacity: 0
+        }))
       ])
     ])
   ]
@@ -40,6 +46,7 @@ export class AppComponent {
   }
 
   onDelete(item: string): void {
+    this.list.splice(this.list.indexOf(item), 1);
   }
 
   onAnimate() {
