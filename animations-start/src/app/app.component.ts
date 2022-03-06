@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { HttpClient } from '@angular/common/http';
+import { Post } from './post/post.model';
 
 @Component({
   selector: 'app-root',
@@ -37,9 +39,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   list = ['Milk', 'Sugar', 'Bread'];
   state = 'normal';
+  posts = [];
 
   onAdd(item: string): void {
     this.list.push(item);
@@ -51,5 +54,16 @@ export class AppComponent {
 
   onAnimate() {
     this.state = this.state === 'normal' ? 'highlighted' : 'normal';
+  }
+
+
+  constructor(private readonly http: HttpClient) {
+
+  }
+
+  ngOnInit() {
+    this.http
+      .get<Post[]>('https://jsonplaceholder.typicode.com/posts')
+      .subscribe(fetchedPosts => (this.posts = fetchedPosts));
   }
 }
